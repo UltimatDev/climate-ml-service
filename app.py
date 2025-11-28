@@ -6,6 +6,7 @@ import uvicorn
 model = joblib.load("model.joblib")
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],      
