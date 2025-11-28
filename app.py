@@ -19,10 +19,11 @@ class ClimateInput(BaseModel):
     rainfall_mm: float
     temperature_c: float
     ndvi: float
+    crop_code:float
 
 @app.post("/predict")
 def predict_yield(data: ClimateInput):
-    x = [[data.rainfall_mm, data.temperature_c, data.ndvi]]
+    x = [[data.rainfall_mm, data.temperature_c, data.ndvi, data.crop_code]]
     pred = model.predict(x)[0]
     return {"predicted_yield": float(pred)}
 
