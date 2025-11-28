@@ -6,6 +6,13 @@ import uvicorn
 model = joblib.load("model.joblib")
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class ClimateInput(BaseModel):
     rainfall_mm: float
